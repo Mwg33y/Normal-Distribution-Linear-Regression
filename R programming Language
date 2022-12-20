@@ -43,6 +43,7 @@ library(ggplot2)
   
   plot(used_cars$Mileage,Prices)
   plot(used_cars$Mileage,log_Ps)
+  plot(used_cars$log_mileage,log_Ps)
   
   #We will use logarithm of prices instead of prices from here on
   
@@ -116,15 +117,15 @@ library(ggplot2)
 #Linear regression (This data uses dummy variables for different used car brands)
           
           miles=used_cars$Mileage
-          
+          log_miles=log(miles,base = 10)
           
   #Check for linearity 
           
           plot(miles,Prices) # this plot shows an exponential relationship
           abline(lm(Prices~miles,data=used_cars),col='red')
           
-          plot(miles,log_Ps) # this plot shows a linear relationship
-          abline(lm(log_Ps~miles,data=used_cars),col='red') #regression line
+          plot(log_miles,log_Ps) # this plot shows a linear relationship
+          abline(lm(log_Ps~log_miles,data=used_cars),col='red') #regression line
           
           
           
@@ -155,7 +156,7 @@ library(ggplot2)
           
           #using the correlation coefficient, we can demonstrates no linearity between 
           #between any of the dependent variables
-          cor(miles, years)
+          cor(log_miles, years)
           cor(engine_volume, years)
           cor(miles, engine_volume)
 
@@ -168,7 +169,7 @@ library(ggplot2)
           
          
           
-          lm.usedcars<- lm(formula = log_Ps ~ miles+years+engine_volume,data=used_cars)
+          lm.usedcars<- lm(formula = log_Ps ~ log_miles+years+engine_volume,data=used_cars)
 
           anova(lm.usedcars)
           summary(lm.usedcars)
@@ -179,4 +180,16 @@ library(ggplot2)
             #the very very low p-value at 2.2e-16,the high F-statistic value
             #of 4166, and the equality of SST and SSR indicates that these regressors 
             #explain the price and capture all variability in the population
+
+
+
+
+
+
+
+
+
+
+
+
 
