@@ -22,7 +22,7 @@ library(ggplot2)
 
 #retrieve the used car data
   used_cars <- read.csv(
-  "C:\\Users\\Deka\\Desktop\\DataAnalysis22\\Portfolio\\Regression_Example_R\\Regression_Analysis_Used_Cars.csv",
+  "C:\\Users\\Abdul\\Desktop\\DataAnalysis22\\Portfolio\\Regression_Example_R\\Regression_Analysis_Used_Cars.csv",
   stringsAsFactors = FALSE)
 
 #set used_cars object as a data frame
