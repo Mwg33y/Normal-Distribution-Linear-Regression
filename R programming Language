@@ -32,6 +32,12 @@ library(ggplot2)
   used_cars$Price = as.factor(gsub(",", "",used_cars$Price))
   used_cars$Price = as.numeric(gsub("\\$", "", used_cars$Price))
 
+
+
+# Part A
+
+
+
 #save Prices column in a new vector & save log_prices column in a another vector
   Prices <- used_cars$Price
   log_Ps <- used_cars$log_price
@@ -112,7 +118,12 @@ library(ggplot2)
   
 
   
-  
+
+
+# Part B
+
+
+
   
 #Linear regression (This data uses dummy variables for different used car brands)
           
