@@ -102,12 +102,6 @@ library(ggplot2)
 
 
 
-
-
-#confidence interval of Price data
-
-
-
 #Normal distribution plot of log of prices, where the mean is centered around zero
 #and the standard deviation is set to one
   
