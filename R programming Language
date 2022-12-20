@@ -22,7 +22,7 @@ library(ggplot2)
 
 #retrieve the used car data
   used_cars <- read.csv(
-  "C:\\Users\\Abdul\\Desktop\\DataAnalysis22\\Portfolio\\Regression_Example_R\\Regression_Analysis_Used_Cars.csv",
+  "C:\\Users\\Deka\\Desktop\\DataAnalysis22\\Portfolio\\Regression_Example_R\\Regression_Analysis_Used_Cars.csv",
   stringsAsFactors = FALSE)
 
 #set used_cars object as a data frame
@@ -139,7 +139,7 @@ library(ggplot2)
           
           log_miles=log(miles, base=10)
           
-          plot(log_miles,log_Ps)
+          plot(log_miles,log_Ps,main ="log-log plot")
           
           abline(lm(log_Ps ~ log_miles,data=used_cars),col='red')#regression line
           
@@ -168,8 +168,17 @@ library(ggplot2)
           #regressors explain 76% of the price of a used car. This is a strong indicator
           
          
+  #linear regression equation
+          #dummy variables
+          audi=used_cars$Audi_D
+          bmw=used_cars$BMW_D
+          mercedes=used_cars$Mercedes_D
+          mitsubishi=used_cars$Mitsubishi_D
+          renault=used_cars$Renault_D
           
-          lm.usedcars<- lm(formula = log_Ps ~ log_miles+years+engine_volume,data=used_cars)
+          lm.usedcars<- lm(
+            formula = log_Ps ~ log_miles+years+engine_volume+audi+bmw+mercedes+mitsubishi+renault,
+            data=used_cars)
 
           anova(lm.usedcars)
           summary(lm.usedcars)
